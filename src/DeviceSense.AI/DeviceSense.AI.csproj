@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DeviceSense.AI</RootNamespace>
+    <AssemblyName>DeviceSense.AI</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DeviceSense.Core\DeviceSense.Core.csproj" />
+  </ItemGroup>
+
+</Project>

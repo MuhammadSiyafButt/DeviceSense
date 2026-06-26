@@ -1,0 +1,55 @@
+## .NET / Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio cache/options
+.vs/
+*.vspscc
+*.vssscc
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+.nuget/
+
+## Rider / VS Code
+.idea/
+.vscode/
+*.DotSettings.user
+
+## Test results
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+
+## Local DB / SQLite history file
+*.db
+*.db-shm
+*.db-wal
+
+## Secrets / environment config
+config/appsettings.local.json
+config/appsettings.*.local.json
+.env
+
+## OS files
+.DS_Store
+Thumbs.db
