@@ -1,0 +1,34 @@
+<UserControl x:Class="DeviceSense.UI.Views.Performance.CpuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F0F2F5">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,28,32,32">
+            <TextBlock Text="CPU" FontSize="24" FontWeight="Bold" Foreground="#1E1E2E" Margin="0,0,0,4"/>
+            <TextBlock Text="Processor usage and information" FontSize="13" Foreground="#9E9EBB" Margin="0,0,0,24"/>
+            <UniformGrid Columns="2">
+                <Border Margin="0,0,10,10" Background="White" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Usage" FontSize="12" Foreground="#6B6B8A" Margin="0,0,0,10"/>
+                        <TextBlock FontSize="36" FontWeight="Bold" Foreground="#1E1E2E">
+                            <Run Text="{Binding UsagePercent, StringFormat={}{0:F0}}"/><Run Text="%"/>
+                        </TextBlock>
+                        <ProgressBar Value="{Binding UsagePercent}" Maximum="100"
+                                     Height="6" Margin="0,12,0,0" Background="#EDEDF5" Foreground="#6C63FF"/>
+                    </StackPanel>
+                </Border>
+                <Border Margin="10,0,0,10" Background="White" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Processor" FontSize="12" Foreground="#6B6B8A" Margin="0,0,0,10"/>
+                        <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="SemiBold"
+                                   Foreground="#1E1E2E" TextWrapping="Wrap"/>
+                        <TextBlock Margin="0,10,0,0" FontSize="13" Foreground="#6B6B8A">
+                            <Run Text="{Binding Cores}"/><Run Text=" Cores · "/>
+                            <Run Text="{Binding Threads}"/><Run Text=" Threads"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,112 @@
+<Window x:Class="DeviceSense.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:DeviceSense.UI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="DeviceSense" Height="740" Width="1240"
+        Background="#F0F2F5" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ── Sidebar ── -->
+        <Border Grid.Column="0" Background="#1E1E2E">
+            <DockPanel>
+
+                <!-- Logo -->
+                <Border DockPanel.Dock="Top" Padding="20,24,20,16"
+                        BorderBrush="#2D2D44" BorderThickness="0,0,0,1">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="32" Height="32" Fill="#6C63FF"/>
+                        <TextBlock Text="DeviceSense" Foreground="White" FontSize="16"
+                                   FontWeight="SemiBold" VerticalAlignment="Center"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Nav -->
+                <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0,12,0,12">
+
+                        <TextBlock Text="OVERVIEW" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,4,0,4"/>
+                        <RadioButton GroupName="Nav" Content="Dashboard" IsChecked="True"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Dashboard"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                        <TextBlock Text="HARDWARE" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,14,0,4"/>
+                        <RadioButton GroupName="Nav" Content="Performance"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Performance"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Storage"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Storage"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Battery"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Battery"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                        <TextBlock Text="SYSTEM" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,14,0,4"/>
+                        <RadioButton GroupName="Nav" Content="Devices"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Devices"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Installed Apps"
+                                     Command="{Binding NavigateCommand}" CommandParameter="InstalledApps"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                        <TextBlock Text="SECURITY" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,14,0,4"/>
+                        <RadioButton GroupName="Nav" Content="Security Status"
+                                     Command="{Binding NavigateCommand}" CommandParameter="SecurityStatus"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Driver Health"
+                                     Command="{Binding NavigateCommand}" CommandParameter="DriverHealth"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                        <TextBlock Text="NETWORK" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,14,0,4"/>
+                        <RadioButton GroupName="Nav" Content="Wi-Fi"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Wifi"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Bandwidth"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Bandwidth"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                        <TextBlock Text="SYSTEM HEALTH" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,14,0,4"/>
+                        <RadioButton GroupName="Nav" Content="Startup Apps"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Startup"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Updates"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Updates"
+                                     Style="{StaticResource SidebarNavButton}"/>
+                        <RadioButton GroupName="Nav" Content="Crash Logs"
+                                     Command="{Binding NavigateCommand}" CommandParameter="CrashLogs"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                        <TextBlock Text="AI" Foreground="#6B6B8A" FontSize="10"
+                                   FontWeight="Bold" Margin="20,14,0,4"/>
+                        <RadioButton GroupName="Nav" Content="AI Chat"
+                                     Command="{Binding NavigateCommand}" CommandParameter="Chat"
+                                     Style="{StaticResource SidebarNavButton}"/>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+            </DockPanel>
+        </Border>
+
+        <!-- Content -->
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,88 @@
+<UserControl x:Class="DeviceSense.UI.Views.Security.SecurityStatusView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Background="#F0F2F5">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,28,32,32">
+
+            <TextBlock Text="Security Status" FontSize="24" FontWeight="Bold"
+                       Foreground="#1E1E2E" Margin="0,0,0,4"/>
+            <TextBlock Text="Windows Defender and Firewall overview" FontSize="13"
+                       Foreground="#9E9EBB" Margin="0,0,0,24"/>
+
+            <!-- 2x2 Status Cards -->
+            <UniformGrid Columns="2">
+
+                <!-- Defender Enabled -->
+                <Border Margin="0,0,10,10" Background="White" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Windows Defender" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#1E1E2E" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Ellipse Width="10" Height="10" Margin="0,0,8,0"
+                                     Fill="{Binding Security.DefenderEnabled,
+                                            Converter={StaticResource BoolToStatusColorConverter}}"/>
+                            <TextBlock FontSize="13" Foreground="#6B6B8A"
+                                       Text="{Binding Security.DefenderEnabled,
+                                              Converter={StaticResource BoolToEnabledTextConverter}}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Firewall -->
+                <Border Margin="10,0,0,10" Background="White" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Firewall" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#1E1E2E" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Ellipse Width="10" Height="10" Margin="0,0,8,0"
+                                     Fill="{Binding Security.FirewallEnabled,
+                                            Converter={StaticResource BoolToStatusColorConverter}}"/>
+                            <TextBlock FontSize="13" Foreground="#6B6B8A"
+                                       Text="{Binding Security.FirewallEnabled,
+                                              Converter={StaticResource BoolToEnabledTextConverter}}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Real-Time Protection -->
+                <Border Margin="0,0,10,10" Background="White" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Real-Time Protection" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#1E1E2E" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Ellipse Width="10" Height="10" Margin="0,0,8,0"
+                                     Fill="{Binding Security.RealTimeProtectionEnabled,
+                                            Converter={StaticResource BoolToStatusColorConverter}}"/>
+                            <TextBlock FontSize="13" Foreground="#6B6B8A"
+                                       Text="{Binding Security.RealTimeProtectionEnabled,
+                                              Converter={StaticResource BoolToEnabledTextConverter}}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Virus Definitions -->
+                <Border Margin="10,0,0,10" Background="White" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Virus Definitions" FontSize="13" FontWeight="SemiBold"
+                                   Foreground="#1E1E2E" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Ellipse Width="10" Height="10" Margin="0,0,8,0"
+                                     Fill="{Binding Security.VirusDefinitionsUpToDate,
+                                            Converter={StaticResource BoolToStatusColorConverter}}"/>
+                            <TextBlock FontSize="13" Foreground="#6B6B8A"
+                                       Text="{Binding Security.VirusDefinitionsUpToDate,
+                                              Converter={StaticResource BoolToUpToDateTextConverter}}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+            </UniformGrid>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

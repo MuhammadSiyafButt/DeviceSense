@@ -1,0 +1,62 @@
+<UserControl x:Class="DeviceSense.UI.Views.ChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F0F2F5">
+    <Grid Margin="32,28,32,32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="AI Chat" FontSize="24" FontWeight="Bold"
+                   Foreground="#1E1E2E" Margin="0,0,0,4"/>
+        <TextBlock Grid.Row="1" Text="Ask anything about your system" FontSize="13"
+                   Foreground="#9E9EBB" Margin="0,0,0,16"/>
+
+        <!-- Messages -->
+        <Border Grid.Row="2" Background="White" CornerRadius="12" Margin="0,0,0,12">
+            <ListView ItemsSource="{Binding Messages}" Background="Transparent"
+                      BorderThickness="0" Padding="12"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Padding" Value="0,4"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="13" Foreground="#1E1E2E"
+                                   TextWrapping="Wrap" Margin="0,4"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+
+        <!-- Input -->
+        <Border Grid.Row="3" Background="White" CornerRadius="12" Padding="12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
+                         BorderThickness="0" FontSize="13" Foreground="#1E1E2E"
+                         VerticalContentAlignment="Center" Padding="4,0"
+                         Background="Transparent"/>
+                <Button Grid.Column="1" Content="Send" Command="{Binding SendCommand}"
+                        Padding="20,8" Background="#6C63FF" Foreground="White"
+                        BorderThickness="0" FontSize="13" FontWeight="SemiBold" Margin="8,0,0,0"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
